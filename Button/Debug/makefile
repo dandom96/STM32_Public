@@ -9,9 +9,9 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
--include Core/Inc/Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -60,8 +60,8 @@ all: main-build
 main-build: Button.elf secondary-outputs
 
 # Tool invocations
-Button.elf Button.map: $(OBJS) $(USER_OBJS) C:\Users\dvasiliev\git\STM32_Public\Button\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Button.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\dvasiliev\git\STM32_Public\Button\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Button.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Button.elf Button.map: $(OBJS) $(USER_OBJS) E:\Workspaces\STM32_F446RE_workspace\Button\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Button.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\Workspaces\STM32_F446RE_workspace\Button\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Button.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
